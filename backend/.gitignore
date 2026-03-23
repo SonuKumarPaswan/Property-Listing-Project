@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+# Optional: Ignore IDE/editor specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
