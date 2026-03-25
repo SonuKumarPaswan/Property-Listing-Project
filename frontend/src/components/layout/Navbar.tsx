@@ -448,10 +448,11 @@ export default function Navbar() {
               <svg style={{ width: 14, height: 14 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-              Search city or area…
+              Search
             </button>
 
-            <Link href="/Sign-In" className="mh-btn-login">Login</Link>
+            <Link href="/sign-In" className="mh-btn-login">Sign In</Link>
+            <Link href="/sign-up" className="mh-btn-login">Sign Up</Link>
 
             <Link href="/owner/add-property" className="mh-btn-add">
               <svg style={{ width: 15, height: 15 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -461,7 +462,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          
+
           <button
             className={`mh-hamburger md:hidden ${mobileOpen ? "open" : ""}`}
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -474,7 +475,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      
+
       <div className={`mh-mobile-menu ${mobileOpen ? "open" : ""}`}>
         {/* Mobile logo */}
         {/* <div style={{ marginBottom: 32 }}>
@@ -497,7 +498,7 @@ export default function Navbar() {
           <span style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.35)", fontFamily: "'Outfit',sans-serif" }}>Search city or area…</span>
         </div>
 
-        
+
         <div style={{ flex: 1 }}>
           {navLinks.map((link) => (
             <div key={link.label}>
@@ -535,8 +536,11 @@ export default function Navbar() {
 
         {/* Mobile CTA */}
         <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 24, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-          <Link href="/Sign-In" className="mh-btn-login" style={{ textAlign: "center" }} onClick={() => setMobileOpen(false)}>
-            Login
+          <Link href="/sign-In" className="mh-btn-login" style={{ textAlign: "center" }} onClick={() => setMobileOpen(false)}>
+            Sign-In
+          </Link>
+          <Link href="/sign-up" className="mh-btn-login" style={{ textAlign: "center" }} onClick={() => setMobileOpen(false)}>
+            Sign-Up
           </Link>
           <Link href="/owner/add-property" className="mh-btn-add" style={{ justifyContent: "center" }} onClick={() => setMobileOpen(false)}>
             <svg style={{ width: 15, height: 15 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">

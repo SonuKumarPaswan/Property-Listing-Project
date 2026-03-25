@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 
 const SignInPage = () => {
   const [identifier, setIdentifier] = useState("");
@@ -23,6 +25,7 @@ const SignInPage = () => {
       return "Enter a valid email address or 10-digit mobile number.";
     return "";
   };
+   const router = useRouter();
 
   const validatePassword = (val: string) => {
     if (!val) return "Password is required.";
@@ -364,13 +367,18 @@ const SignInPage = () => {
 
           <p className="mt-6 text-center text-sm" style={{ color: "#6b7280" }}>
             Don't have an account?{" "}
-            <button className="font-bold hover:underline" style={{ color: "#2563eb" }}>
-              Create account
-            </button>
+             <button
+      onClick={() => router.push("/sign-up")}
+      className="font-bold hover:underline"
+      style={{ color: "#2563eb" }}
+    >
+      Create account
+    </button>
+
           </p>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
