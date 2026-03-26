@@ -16,22 +16,31 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Mishti Houses",
-  description: "A collection of 10,000 unique houses on the blockchain.",
+  description: "A modern real estate platform",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <head>
+      
+        <meta name="color-scheme" content="light only" />
+      </head>
+
+      <body className="min-h-full flex flex-col bg-[#020617] text-white">
         
+        {/* Navbar missing tha */}
+        <Navbar />
+
         {children}
+
         <Footer />
       </body>
     </html>

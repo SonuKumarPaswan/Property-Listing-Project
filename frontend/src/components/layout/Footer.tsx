@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { label: "Buy", href: "#" },
   { label: "Rent", href: "#" },
   { label: "Sell", href: "#" },
-  { label: "About Us", href: "#" },
+  { label: "About Us", href: "./about" },
   { label: "Contact", href: "#" },
 ];
 
