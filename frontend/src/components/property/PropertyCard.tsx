@@ -84,7 +84,7 @@ function SingleCard({ property }: { property: (typeof PROPERTIES)[0] }) {
           {/* Price overlay */}
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-4 pt-6 pb-3">
             <p className="text-white font-bold text-xl leading-tight">
-              {/* {formatPrice(property.price, property.listingType)} */}
+              {/* {formatPrice(property.price, property?.listingType)} */}
             </p>
           </div>
         </div>

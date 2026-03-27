@@ -1,9 +1,11 @@
-"use client";
+import React from 'react'
 
-export default function OwnerPropertyPage() {
+const page = () => {
   return (
-    <div className="text-white p-10">
-      Add Property Page
+    <div>
+      <h1>Owner dashboard</h1>
     </div>
-  );
+  )
 }
+
+export default page
