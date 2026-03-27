@@ -323,10 +323,9 @@ export default function AboutPage() {
                   "linear-gradient(110deg, #2043B0 0%, #2043B0 40%, #67e8f9 100%)",
               }}
             >
-              Mishti
-            </span>
-            <br />
-            <span className="text-white">Houses</span>
+              Mishti           
+            <span className="text-white"> Houses.com</span>
+             </span>
           </motion.h1>
 
           <motion.p
