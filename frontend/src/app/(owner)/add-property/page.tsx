@@ -1,11 +1,9 @@
-import React from 'react'
+"use client";
 
-const page = () => {
+export default function AddPropertyPage() {
   return (
-    <div>
-      <h1>Property</h1>
+    <div className="text-white p-10">
+      Add Property Page
     </div>
-  )
+  );
 }
-
-export default page

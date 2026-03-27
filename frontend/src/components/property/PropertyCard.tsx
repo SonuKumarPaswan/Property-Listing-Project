@@ -24,8 +24,12 @@ const typeColors: Record<string, string> = {
 
 function SingleCard({ property }: { property: (typeof PROPERTIES)[0] }) {
   const [liked, setLiked] = useState(false)
-  const primaryImage =
-    property.images.find((i) => i.isPrimary)?.url ?? property.images[0]?.url
+  // const primaryImage =
+    // property.images.find((i) => i.isPrimary)?.url ?? property.images[0]?.url
+    const primaryImage =
+  property.images?.find((i) => i.isPrimary)?.url ||
+  property.images?.[0]?.url ||
+  "/placeholder.jpg";
 
   return (
     <Link href={`/properties/${property.slug}`} className="group block">
