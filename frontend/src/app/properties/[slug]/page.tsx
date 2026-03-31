@@ -1,11 +1,13 @@
-import React from 'react'
+"use client";
 
-const page = () => {
+import PropertyHeading from "@/components/property/PropertyHeading";
+
+const Page = () => {
   return (
-    <div>
-       this is slug page
+    <div className="">
+      <PropertyHeading />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default Page;

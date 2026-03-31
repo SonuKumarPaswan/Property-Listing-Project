@@ -30,10 +30,15 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+<<<<<<< HEAD
       <body className="min-h-full flex flex-col bg-[#020617] text-white">
 
         {/* 🔥 Motion wrapper (smooth UI fix) */}
         <MotionProvider>
+=======
+      <body className="min-h-full flex flex-col">
+        {children}
+>>>>>>> 1f50dafee02251e5d8b5d0b4003260b16c82a522
 
           {/* Navbar */}
           <Navbar />
