@@ -62,8 +62,8 @@ function SingleCard({ property }: { property: (typeof PROPERTIES)[0] }) {
 
           {/* Featured */}
           {property.isFeatured && (
-            <div className="absolute top-3 right-12 bg-amber-400 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">
-              ★ Featured
+            <div className="absolute top-4 right-12 bg-amber-400 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">
+              ★ 
             </div>
           )}
 
