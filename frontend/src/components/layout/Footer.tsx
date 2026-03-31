@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { label: "Rent", href: "#" },
   { label: "Sell", href: "#" },
   { label: "About Us", href: "./about" },
-  { label: "Contact", href: "#" },
+  { label: "Contact", href: "./contact" },
 ];
 
 const CITIES = ["Mumbai", "Delhi", "Bengaluru", "Hyderabad", "Chennai", "Pune", "Kolkata", "Ahmedabad"];
