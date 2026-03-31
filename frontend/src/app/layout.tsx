@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type {Metadata} from "next";
+import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
-import MotionProvider from "./providers/MotionProvider"; // 👈 add this
+import MotionProvider from "./providers/MotionProvider"; 
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,37 +20,21 @@ export const metadata: Metadata = {
   description: "A modern real estate platform",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-<<<<<<< HEAD
-      <body className="min-h-full flex flex-col bg-[#020617] text-white">
-
-        {/* 🔥 Motion wrapper (smooth UI fix) */}
-        <MotionProvider>
-=======
       <body className="min-h-full flex flex-col">
         {children}
->>>>>>> 1f50dafee02251e5d8b5d0b4003260b16c82a522
 
-          {/* Navbar */}
+        <MotionProvider>
           <Navbar />
-
-          {/* Main content */}
-          <main className="flex-1 smooth-ui">
-            {children}
-          </main>
+          <main className="flex-1 smooth-ui">{children}</main>
 
           {/* Footer */}
           <Footer />
-
         </MotionProvider>
       </body>
     </html>
