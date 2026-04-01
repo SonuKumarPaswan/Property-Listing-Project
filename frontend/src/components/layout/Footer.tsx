@@ -4,13 +4,18 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const NAV_LINKS = [
-  { label: "Home", href: "#" },
-  { label: "Properties", href: "#" },
-  { label: "Buy", href: "#" },
-  { label: "Rent", href: "#" },
-  { label: "Sell", href: "#" },
-  { label: "About Us", href: "./about" },
-  { label: "Contact", href: "./contact" },
+  { label: "Home", path: "#" },
+  { label: "Properties", path: "#" },
+  { label: "Buy", path: "#" },
+  { label: "Rent", path: "#" },
+  { label: "Sell", path: "#" },
+  { label: "About Us", path: "/about" },
+  { label: "Contact", path: "/contact" },
+
+  { label: "Privacy Policy", path: "/privacy-policy" },
+  { label: "Terms of Service", path: "/terms-of-service" },
+  { label: "Cookie Policy", path: "/cookie-policy" },
+  { label: "Sitemap", path: "/sitemap" },
 ];
 
 const CITIES = ["Mumbai", "Delhi", "Bengaluru", "Hyderabad", "Chennai", "Pune", "Kolkata", "Ahmedabad"];
@@ -474,23 +479,23 @@ export default function Footer() {
             <div className={`mh-reveal mh-reveal-d1 ${inView ? "visible" : ""}`}>
               {/* Logo */}
               <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "6px" }}>
-               
+
                 <div>
                   <Link href="/">
-            <Image
-              src="/logo.png"
-              alt="Mishti Houses Logo"
-              width={320}           // Increased size
-              height={140}
-              priority
-              className="rounded-lg"
-              style={{
-                width: "280px",     // You can change this value to make it bigger/smaller
-                height: "auto",
-                objectFit: "contain",
-              }}
-            />
-          </Link>
+                    <Image
+                      src="/logo.png"
+                      alt="Mishti Houses Logo"
+                      width={320}           // Increased size
+                      height={140}
+                      priority
+                      className="rounded-lg"
+                      style={{
+                        width: "280px",     // You can change this value to make it bigger/smaller
+                        height: "auto",
+                        objectFit: "contain",
+                      }}
+                    />
+                  </Link>
                   <div className="mh-logo-tagline">Real Estate Platform</div>
                 </div>
               </div>
@@ -498,12 +503,12 @@ export default function Footer() {
               <p style={{ fontSize: "0.88rem", lineHeight: 1.75, color: "#6b8fc7", margin: "1.25rem 0" }}>
                 Buy, sell, or rent properties with ease. Thousands of verified listings across India, trusted by buyers and agents alike.
               </p>
-<h3> Contact us:</h3>
+              <h3> Contact us:</h3>
               <div style={{ display: "flex", flexDirection: "column", gap: "2px", marginBottom: "1.5rem" }}>
                 {[
-                  {  text: "support@mishtihouses.com" },
+                  { text: "support@mishtihouses.com" },
                   { text: "+91 9876543210" },
-                  {  text: "Noida, Uttar Pradesh, India" },
+                  { text: "Noida, Uttar Pradesh, India" },
                 ].map((c) => (
                   <div key={c.text} style={{ display: "flex", alignItems: "center", gap: "0px", fontSize: "0.74rem", color: "#6b8fc7" }}>
                     <span style={{ fontSize: "0.85rem" }}></span>
@@ -529,7 +534,7 @@ export default function Footer() {
                 {NAV_LINKS.map((l) => (
                   <a
                     key={l.label}
-                    href={l.href}
+                    href={l.path}
                     className="mh-navlink"
                     onMouseEnter={() => setHoveredLink(l.label)}
                     onMouseLeave={() => setHoveredLink(null)}
@@ -606,8 +611,11 @@ export default function Footer() {
                 © {new Date().getFullYear()} Mishti Houses. All rights reserved.
               </div>
               <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
-                {["Privacy Policy", "Terms of Service", "Cookie Policy", "Sitemap"].map((item) => (
-                  <a key={item} href="#">{item}</a>
+                {NAV_LINKS.map((item) => (
+                  <Link key={item.label} href={item.path}>
+                    {item.label}
+                  </Link>
+
                 ))}
               </div>
               <div style={{ fontSize: "0.78rem", color: "#2d4a6b" }}>

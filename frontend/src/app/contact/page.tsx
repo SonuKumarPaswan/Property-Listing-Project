@@ -150,7 +150,7 @@ export default function ContactPage() {
         </motion.div>
       </section>
 
-      {/* Content grid */}
+      
       <section className="relative px-4 pb-20 mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 xl:gap-12 items-start">
 
