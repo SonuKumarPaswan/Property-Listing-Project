@@ -451,10 +451,10 @@ export default function Navbar() {
               Search
             </button>
 
-            <Link href="/sign-In" className="mh-btn-login">Sign In</Link>
+            <Link href="/sign-in" className="mh-btn-login">Sign In</Link>
             <Link href="/sign-up" className="mh-btn-login">Sign Up</Link>
 
-            <Link href="/owner/add-property" className="mh-btn-add">
+            <Link href="/add-property" className="mh-btn-add">
               <svg style={{ width: 15, height: 15 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
               </svg>
@@ -536,13 +536,13 @@ export default function Navbar() {
 
         {/* Mobile CTA */}
         <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 24, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-          <Link href="/sign-In" className="mh-btn-login" style={{ textAlign: "center" }} onClick={() => setMobileOpen(false)}>
+          <Link href="/sign-in" className="mh-btn-login" style={{ textAlign: "center" }} onClick={() => setMobileOpen(false)}>
             Sign-In
           </Link>
           <Link href="/sign-up" className="mh-btn-login" style={{ textAlign: "center" }} onClick={() => setMobileOpen(false)}>
             Sign-Up
           </Link>
-          <Link href="/owner/add-property" className="mh-btn-add" style={{ justifyContent: "center" }} onClick={() => setMobileOpen(false)}>
+          <Link href="/add-property" className="mh-btn-add" style={{ justifyContent: "center" }} onClick={() => setMobileOpen(false)}>
             <svg style={{ width: 15, height: 15 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
             </svg>
