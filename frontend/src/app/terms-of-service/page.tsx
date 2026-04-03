@@ -53,7 +53,7 @@ function buildSections(): SectionDef[] {
             content: (
                 <>
                     <P>Welcome to <strong className="text-white font-semibold">MishtiHouses.com</strong> — a premium <em>real estate platform</em> built to transform the way people discover, evaluate, and transact in property across India. Whether you intend to <em>buy, sell, or rent property</em>, MishtiHouses.com provides a secure, transparent, and technology-first environment.</P>
-                    <P>These Terms of Service ("Terms") constitute a legally binding agreement between you ("User") and MishtiHouses Technologies Pvt. Ltd. ("Company", "we", "us", or "our"), governing your access to and use of the Platform.</P>
+                    <P>These Terms of Service ("Terms") constitute a legally binding agreement between you ("User") and MishtiHouses.com ("Company", "we", "us", or "our"), governing your access to and use of the Platform.</P>
                     <Note>By accessing any part of this Platform — even without creating an account — you confirm that you have read, understood, and agreed to these Terms in their entirety. If you disagree with any provision, please discontinue use immediately.</Note>
                     <P>MishtiHouses.com serves as a neutral digital marketplace connecting buyers, sellers, landlords, tenants, and registered agents. We do not directly own, manage, or sell any property featured herein.</P>
                 </>
@@ -131,7 +131,7 @@ function buildSections(): SectionDef[] {
                         "Ensure that all submitted content — text, images, and documents — is accurate and does not infringe third-party rights.",
                         "Promptly report any suspicious listings or policy violations to our support team.",
                     ]} />
-                    <P>You further agree not to use any automated tools, bots, web scrapers, or crawlers to access or aggregate Platform data without prior written consent from MishtiHouses Technologies Pvt. Ltd.</P>
+                    <P>You further agree not to use any automated tools, bots, web scrapers, or crawlers to access or aggregate Platform data without prior written consent from MishtiHouses.com</P>
                 </>
             ),
         },
@@ -177,7 +177,7 @@ function buildSections(): SectionDef[] {
             id: "ip", label: "Intellectual Property", icon: <Copyright size={15} />,
             content: (
                 <>
-                    <P>All content, features, and functionality on MishtiHouses.com — including text, graphics, logos, UI design, source code, and data compilations — are the exclusive intellectual property of MishtiHouses Technologies Pvt. Ltd. or its licensors, protected under Indian and international copyright and trademark laws.</P>
+                    <P>All content, features, and functionality on MishtiHouses.com — including text, graphics, logos, UI design, source code, and data compilations — are the exclusive intellectual property of MishtiHouses.com or its licensors, protected under Indian and international copyright and trademark laws.</P>
                     <P>By submitting content to the Platform (including property photos, descriptions, and floor plans), you grant MishtiHouses.com a non-exclusive, royalty-free, worldwide, sublicensable licence to use, display, and distribute such content solely for operating and promoting the Platform.</P>
                     <Note warn>Unauthorised reproduction, redistribution, or commercial exploitation of any content from this Platform is strictly prohibited and may result in civil and criminal liability under the Copyright Act, 1957.</Note>
                 </>
@@ -197,7 +197,7 @@ function buildSections(): SectionDef[] {
             id: "liability", label: "Limitation of Liability", icon: <Scale size={15} />,
             content: (
                 <>
-                    <P>To the fullest extent permitted under applicable law, MishtiHouses Technologies Pvt. Ltd. — including its directors, officers, employees, agents, and licensors — shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from:</P>
+                    <P>To the fullest extent permitted under applicable law, MishtiHouses.com — including its directors, officers, employees, agents, and licensors — shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from:</P>
                     <Bullets items={[
                         "Your use of, or inability to use, any part of the Platform.",
                         "Inaccuracies, omissions, or errors in any property listing.",
@@ -269,7 +269,7 @@ function buildSections(): SectionDef[] {
                     </div>
                     <div className="mt-3 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3">
                         <p className="text-[10px] uppercase tracking-widest text-white/25 mb-1">Registered Office</p>
-                        <p className="text-sm text-slate-400">MishtiHouses Technologies Pvt. Ltd., Basement B-07, AGS Building, C-27 Sector-63, Noida, 201301, India.</p>
+                        <p className="text-sm text-slate-400">MishtiHouses.com , Basement B-07, AGS Building, C-27 Sector-63, Noida, 201301, India.</p>
                     </div>
                 </>
             ),
