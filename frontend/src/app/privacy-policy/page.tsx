@@ -208,7 +208,7 @@ const PrivacyPolicyPage = () => {
           </p>
           <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '10px', marginTop: '8px' }}>
             <ContactItem icon="📍" label="Address" value="C-127 Block-C Sector-63, Noida, Uttar Pradesh 201301" />
-            <ContactItem icon="📞" label="Phone" value="+91 98765 43210 (Mon–Sat, 9 AM – 7 PM)" />
+            <ContactItem icon="📞" label="Phone" value="+91 9876543210 (Mon–Sat, 9 AM – 7 PM)" />
             <ContactItem icon="✉️" label="Email" value="support@mishtihouses.com" />
           </div>
           <p style={{ margin: 0, color: '#7a9bbf', fontSize: '13px', fontFamily: "'Arial', sans-serif", marginTop: '8px' }}>
@@ -220,8 +220,6 @@ const PrivacyPolicyPage = () => {
     </div>
   )
 }
-
-// ── Sub-components ─────────────────────────────────────────────────────────────
 
 interface PolicySectionProps {
   number: string
