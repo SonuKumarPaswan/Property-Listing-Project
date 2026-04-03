@@ -451,7 +451,7 @@ export default function Navbar() {
               Search
             </button>
 
-            <Link href="/sign-In" className="mh-btn-login">Sign In</Link>
+            <Link href="/sign-in" className="mh-btn-login">Sign In</Link>
             <Link href="/sign-up" className="mh-btn-login">Sign Up</Link>
 
             <Link href="/add-property" className="mh-btn-add">
