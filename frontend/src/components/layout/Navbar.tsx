@@ -2,14 +2,19 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import {useState, useEffect, useRef} from "react";
+import { useRouter } from "next/navigation";
 
 const navLinks = [
   {
     label: "Home",
     href: "/",
     icon: (
-      <svg style={{ width: 16, height: 16 }} fill="currentColor" viewBox="0 0 24 24">
+      <svg
+        style={{width: 16, height: 16}}
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
         <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
       </svg>
     ),
@@ -18,40 +23,91 @@ const navLinks = [
     label: "Properties",
     href: "/properties",
     icon: (
-      <svg style={{ width: 16, height: 16 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8}
-          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      <svg
+        style={{width: 16, height: 16}}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.8}
+          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+        />
       </svg>
     ),
     dropdown: [
-      { label: "Buy", href: "/properties/buy", desc: "Ready-to-move homes" },
-      { label: "Rent", href: "/properties/rent", desc: "Verified rental listings" },
-      { label: "New Projects", href: "/properties/new", desc: "Under-construction deals" },
-      { label: "Commercial", href: "/properties/commercial", desc: "Offices & shops" },
+      {label: "Buy", href: "/properties/buy", desc: "Ready-to-move homes"},
+      {
+        label: "Rent",
+        href: "/properties/rent",
+        desc: "Verified rental listings",
+      },
+      {
+        label: "New Projects",
+        href: "/properties/new",
+        desc: "Under-construction deals",
+      },
+      {
+        label: "Commercial",
+        href: "/properties/commercial",
+        desc: "Offices & shops",
+      },
     ],
   },
   {
     label: "Explore",
     href: "/explore",
     icon: (
-      <svg style={{ width: 16, height: 16 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8}
-          d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+      <svg
+        style={{width: 16, height: 16}}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.8}
+          d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+        />
       </svg>
     ),
     dropdown: [
-      { label: "City Guide", href: "/explore/cities", desc: "Top cities to invest" },
-      { label: "Locality Insights", href: "/explore/locality", desc: "Neighbourhood data" },
-      { label: "Price Trends", href: "/explore/trends", desc: "Market analytics" },
+      {
+        label: "City Guide",
+        href: "/explore/cities",
+        desc: "Top cities to invest",
+      },
+      {
+        label: "Locality Insights",
+        href: "/explore/locality",
+        desc: "Neighbourhood data",
+      },
+      {
+        label: "Price Trends",
+        href: "/explore/trends",
+        desc: "Market analytics",
+      },
     ],
   },
   {
     label: "Wishlist",
     href: "/wishlist",
     icon: (
-      <svg style={{ width: 16, height: 16 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8}
-          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+      <svg
+        style={{width: 16, height: 16}}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.8}
+          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+        />
       </svg>
     ),
   },
@@ -59,20 +115,49 @@ const navLinks = [
     label: "Agents",
     href: "/agents",
     icon: (
-      <svg style={{ width: 16, height: 16 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8}
-          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+      <svg
+        style={{width: 16, height: 16}}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.8}
+          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
+        />
       </svg>
     ),
   },
 ];
 
 export default function Navbar() {
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
   const dropdownTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkAuth = () => {
+      const token = localStorage.getItem("token");
+      setIsLoggedIn(!!token);
+    };
+
+    window.addEventListener("storage", checkAuth);
+    checkAuth();
+
+    return () => window.removeEventListener("storage", checkAuth);
+  }, []);
+
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    router.push("/sign-in");
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -389,23 +474,49 @@ export default function Navbar() {
       `}</style>
 
       <nav className={`mh-nav ${scrolled ? "scrolled" : "top"}`}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 20px", height: 68, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
-
+        <div
+          style={{
+            maxWidth: 1280,
+            margin: "0 auto",
+            padding: "0 20px",
+            height: 68,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 16,
+          }}
+        >
           {/* Logo */}
-          <Link href="/" className="mh-logo mh-nav-item" style={{ animationDelay: "0s" }}>
+          <Link
+            href="/"
+            className="mh-logo mh-nav-item"
+            style={{animationDelay: "0s"}}
+          >
             <div className="mh-logo-full">
-              <Image src="/logo.png" alt="Mishti Houses Logo" width={160} height={148} style={{ objectFit: "contain", width: "auto", height: "178px" }} priority />
+              <Image
+                src="/logo.png"
+                alt="Mishti Houses Logo"
+                width={160}
+                height={148}
+                style={{objectFit: "contain", width: "auto", height: "178px"}}
+                priority
+              />
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-1" style={{ flex: 1, justifyContent: "center" }}>
+          <div
+            className="hidden md:flex items-center gap-1"
+            style={{flex: 1, justifyContent: "center"}}
+          >
             {navLinks.map((link) => (
               <div
                 key={link.label}
                 className="mh-nav-item"
-                style={{ position: "relative" }}
-                onMouseEnter={() => link.dropdown && handleMouseEnter(link.label)}
+                style={{position: "relative"}}
+                onMouseEnter={() =>
+                  link.dropdown && handleMouseEnter(link.label)
+                }
                 onMouseLeave={handleMouseLeave}
               >
                 <Link
@@ -418,20 +529,41 @@ export default function Navbar() {
                     <span className="mh-notif-dot" />
                   )}
                   {link.dropdown && (
-                    <svg className="mh-link-arrow" style={{ width: 14, height: 14 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    <svg
+                      className="mh-link-arrow"
+                      style={{width: 14, height: 14}}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   )}
                 </Link>
 
                 {link.dropdown && (
-                  <div className={`mh-dropdown ${activeDropdown === link.label ? "open" : ""}`}>
+                  <div
+                    className={`mh-dropdown ${activeDropdown === link.label ? "open" : ""}`}
+                  >
                     {link.dropdown.map((item) => (
-                      <Link key={item.label} href={item.href} className="mh-dropdown-item">
+                      <Link
+                        key={item.label}
+                        href={item.href}
+                        className="mh-dropdown-item"
+                      >
                         <div className="mh-dropdown-item-dot" />
                         <div>
-                          <div className="mh-dropdown-item-label">{item.label}</div>
-                          <div className="mh-dropdown-item-desc">{item.desc}</div>
+                          <div className="mh-dropdown-item-label">
+                            {item.label}
+                          </div>
+                          <div className="mh-dropdown-item-desc">
+                            {item.desc}
+                          </div>
                         </div>
                       </Link>
                     ))}
@@ -445,23 +577,68 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3 mh-nav-item">
             {/* Search pill */}
             <button className="mh-search">
-              <svg style={{ width: 14, height: 14 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              <svg
+                style={{width: 14, height: 14}}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
               </svg>
               Search
             </button>
 
-            <Link href="/sign-in" className="mh-btn-login">Sign In</Link>
-            <Link href="/sign-up" className="mh-btn-login">Sign Up</Link>
+            {!isLoggedIn ? (
+              <>
+                <Link
+                  href="/sign-in"
+                  className="mh-btn-login"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Sign-In
+                </Link>
+                <Link
+                  href="/sign-up"
+                  className="mh-btn-login"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Sign-Up
+                </Link>
+              </>
+            ) : (
+              <button
+                className="mh-btn-login"
+                onClick={() => {
+                  handleLogout();
+                  setMobileOpen(false);
+                }}
+              >
+                Logout
+              </button>
+            )}
 
             <Link href="/add-property" className="mh-btn-add">
-              <svg style={{ width: 15, height: 15 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
+              <svg
+                style={{width: 15, height: 15}}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M12 4v16m8-8H4"
+                />
               </svg>
               Add Property
             </Link>
           </div>
-
 
           <button
             className={`mh-hamburger md:hidden ${mobileOpen ? "open" : ""}`}
@@ -475,7 +652,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-
       <div className={`mh-mobile-menu ${mobileOpen ? "open" : ""}`}>
         {/* Mobile logo */}
         {/* <div style={{ marginBottom: 32 }}>
@@ -485,43 +661,88 @@ export default function Navbar() {
         </div> */}
 
         {/* Mobile search */}
-        <div style={{
-          display: "flex", alignItems: "center", gap: 10,
-          background: "rgba(255,255,255,0.06)",
-          border: "1px solid rgba(255,255,255,0.1)",
-          borderRadius: 12, padding: "12px 16px",
-          marginBottom: 24,
-        }}>
-          <svg style={{ width: 16, height: 16, color: "rgba(255,255,255,0.4)", flexShrink: 0 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            background: "rgba(255,255,255,0.06)",
+            border: "1px solid rgba(255,255,255,0.1)",
+            borderRadius: 12,
+            padding: "12px 16px",
+            marginBottom: 24,
+          }}
+        >
+          <svg
+            style={{
+              width: 16,
+              height: 16,
+              color: "rgba(255,255,255,0.4)",
+              flexShrink: 0,
+            }}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
           </svg>
-          <span style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.35)", fontFamily: "'Outfit',sans-serif" }}>Search city or area…</span>
+          <span
+            style={{
+              fontSize: "0.875rem",
+              color: "rgba(255,255,255,0.35)",
+              fontFamily: "'Outfit',sans-serif",
+            }}
+          >
+            Search city or area…
+          </span>
         </div>
 
-
-        <div style={{ flex: 1 }}>
+        <div style={{flex: 1}}>
           {navLinks.map((link) => (
             <div key={link.label}>
-              <Link href={link.href} className="mh-mobile-link" onClick={() => setMobileOpen(false)}>
+              <Link
+                href={link.href}
+                className="mh-mobile-link"
+                onClick={() => setMobileOpen(false)}
+              >
                 <div className="mh-mobile-link-icon">{link.icon}</div>
                 <span>{link.label}</span>
                 {link.label === "Wishlist" && (
-                  <span style={{
-                    marginLeft: "auto", fontSize: "0.7rem", fontWeight: 700,
-                    background: "#ef4444", color: "#fff",
-                    padding: "2px 7px", borderRadius: 20,
-                  }}>New</span>
+                  <span
+                    style={{
+                      marginLeft: "auto",
+                      fontSize: "0.7rem",
+                      fontWeight: 700,
+                      background: "#ef4444",
+                      color: "#fff",
+                      padding: "2px 7px",
+                      borderRadius: 20,
+                    }}
+                  >
+                    New
+                  </span>
                 )}
               </Link>
               {link.dropdown && (
-                <div style={{ paddingLeft: 52, marginBottom: 8 }}>
+                <div style={{paddingLeft: 52, marginBottom: 8}}>
                   {link.dropdown.map((sub) => (
-                    <Link key={sub.label} href={sub.href}
+                    <Link
+                      key={sub.label}
+                      href={sub.href}
                       onClick={() => setMobileOpen(false)}
                       style={{
-                        display: "block", padding: "7px 12px", borderRadius: 8,
-                        fontSize: "0.82rem", color: "rgba(255,255,255,0.45)",
-                        textDecoration: "none", transition: "color 0.2s",
+                        display: "block",
+                        padding: "7px 12px",
+                        borderRadius: 8,
+                        fontSize: "0.82rem",
+                        color: "rgba(255,255,255,0.45)",
+                        textDecoration: "none",
+                        transition: "color 0.2s",
                         fontFamily: "'Outfit',sans-serif",
                       }}
                     >
@@ -535,16 +756,50 @@ export default function Navbar() {
         </div>
 
         {/* Mobile CTA */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 24, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-          <Link href="/sign-in" className="mh-btn-login" style={{ textAlign: "center" }} onClick={() => setMobileOpen(false)}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 12,
+            marginTop: 24,
+            paddingTop: 24,
+            borderTop: "1px solid rgba(255,255,255,0.08)",
+          }}
+        >
+          <Link
+            href="/sign-in"
+            className="mh-btn-login"
+            style={{textAlign: "center"}}
+            onClick={() => setMobileOpen(false)}
+          >
             Sign-In
           </Link>
-          <Link href="/sign-up" className="mh-btn-login" style={{ textAlign: "center" }} onClick={() => setMobileOpen(false)}>
+          <Link
+            href="/sign-up"
+            className="mh-btn-login"
+            style={{textAlign: "center"}}
+            onClick={() => setMobileOpen(false)}
+          >
             Sign-Up
           </Link>
-          <Link href="/add-property" className="mh-btn-add" style={{ justifyContent: "center" }} onClick={() => setMobileOpen(false)}>
-            <svg style={{ width: 15, height: 15 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
+          <Link
+            href="/add-property"
+            className="mh-btn-add"
+            style={{justifyContent: "center"}}
+            onClick={() => setMobileOpen(false)}
+          >
+            <svg
+              style={{width: 15, height: 15}}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M12 4v16m8-8H4"
+              />
             </svg>
             Add Property
           </Link>

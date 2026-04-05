@@ -29,7 +29,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <body className="min-h-full flex flex-col bg-[#020617] text-white">
         <MotionProvider>
           <Navbar />
-          <main className="flex-1 smooth-ui">{children}</main>
+          <main className="flex-1 smooth-ui mt-16  ">{children}</main>
 
           <Footer />
         </MotionProvider>

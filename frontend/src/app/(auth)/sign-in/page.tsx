@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import api from "@/lib/api";
+
 
 
 const SignInPage = () => {
@@ -53,19 +55,52 @@ const SignInPage = () => {
     }
   };
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setTouched({ identifier: true, password: true });
-    const idErr = validateIdentifier(identifier);
-    const pwErr = validatePassword(password);
-    setErrors({ identifier: idErr, password: pwErr });
-    if (idErr || pwErr) return;
 
+const handleLogin = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  setTouched({ identifier: true, password: true });
+
+  const idErr = validateIdentifier(identifier);
+  const pwErr = validatePassword(password);
+
+  setErrors({ identifier: idErr, password: pwErr });
+  if (idErr || pwErr) return;
+
+  try {
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1500));
+
+    console.log("Attempting login with:", { identifier, password: "******" });
+    const res = await api.post("/users/login", {
+      email: identifier,  
+      password: password,
+    });
+
+   
+    if (res.status === 200) {
+      localStorage.setItem("token", res.data.token);
+      console.log("Login successful, token stored:", res.data.token);
+      setSuccessMsg("Login successful! Redirecting...");
+      setTimeout(() => {
+        router.push("/dashboard"); 
+      }, 1500);
+    }
+
+  } catch (error: any) {
+    console.error("Login error:", error);
+
+    // 🔥 backend error show
+    const errorMessage =
+      error?.response?.data?.message ||
+      error?.response?.data?.error ||
+      error.message ||
+      "Login failed";
+
+    setSuccessMsg(errorMessage); // UI me show
+  } finally {
     setLoading(false);
-    setSuccessMsg("Welcome back! Redirecting to your dashboard…");
-  };
+  }
+};
 
   const handleGoogleLogin = () => {
     setSuccessMsg("Redirecting to Google Sign-In…");

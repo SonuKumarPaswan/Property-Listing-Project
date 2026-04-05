@@ -9,7 +9,7 @@ router.post("/login", loginUser);
 
 // protected routes
 router.get("/", getAllUsers);
-router.get("/profile", getUserProfile);
+router.get("/profile", authMiddleware, getUserProfile);
 router.put("/profile", authMiddleware, updateUserProfile);
 router.delete("/profile", authMiddleware, deleteUserProfile);
 

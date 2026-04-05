@@ -25,7 +25,7 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-// ✅ REGISTER
+//  REGISTER
 const registerUser = async (req, res) => {
   try {
     const {username, email, password, role} = req.body;
@@ -70,12 +70,12 @@ const registerUser = async (req, res) => {
   }
 };
 
-// ✅ LOGIN
+// LOGIN
 const loginUser = async (req, res) => {
   try {
     const {email, password} = req.body;
-    console.log("Login attempt:", {email, password: "********"});
-
+    console.log("Login attempt:",email);
+    
     const user = await User.findOne({email});
     if (!user) {
       return res.status(400).json({message: "Invalid credentials"});
@@ -105,9 +105,12 @@ const loginUser = async (req, res) => {
   }
 };
 
-// ✅ GET PROFILE
 const getUserProfile = async (req, res) => {
   try {
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({message: "Unauthorized"});
+    }
+
     const user = await User.findById(req.user.id).select("-password");
 
     res.json(user);
@@ -116,7 +119,7 @@ const getUserProfile = async (req, res) => {
   }
 };
 
-// ✅ UPDATE PROFILE
+//  UPDATE PROFILE
 const updateUserProfile = async (req, res) => {
   try {
     const {username, email} = req.body;
@@ -141,7 +144,7 @@ const updateUserProfile = async (req, res) => {
   }
 };
 
-// ✅ DELETE PROFILE
+//  DELETE PROFILE
 const deleteUserProfile = async (req, res) => {
   try {
     await User.findByIdAndDelete(req.user.id);
