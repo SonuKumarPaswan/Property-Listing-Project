@@ -33,6 +33,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 
           <Footer />
         </MotionProvider>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
       </body>
     </html>
   );

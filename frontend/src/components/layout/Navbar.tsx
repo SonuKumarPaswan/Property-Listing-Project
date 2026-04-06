@@ -209,7 +209,6 @@ export default function Navbar() {
         }
         .mh-nav.scrolled::after { opacity: 1; }
 
-        /* Logo animation */
         .mh-logo {
           display: flex; align-items: center; gap: 10px;
           text-decoration: none;
@@ -242,7 +241,7 @@ export default function Navbar() {
           transform: scale(1.04);
         }
 
-        /* Nav link */
+       
         .mh-link {
           position: relative;
           display: flex; align-items: center; gap: 6px;
@@ -268,7 +267,7 @@ export default function Navbar() {
           transform: rotate(180deg);
           opacity: 1;
         }
-        /* Animated underline */
+      
         .mh-link::after {
           content: '';
           position: absolute;
@@ -282,7 +281,7 @@ export default function Navbar() {
           left: 14px; right: 14px;
         }
 
-        /* Dropdown */
+        
         .mh-dropdown {
           position: absolute;
           top: calc(100% + 12px);
@@ -322,7 +321,7 @@ export default function Navbar() {
           font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 1px;
         }
 
-        /* Buttons */
+        
         .mh-btn-login {
           padding: 8px 18px;
           border-radius: 9px;
@@ -367,7 +366,6 @@ export default function Navbar() {
           transform: translateY(-2px);
         }
 
-        /* Notification dot */
         .mh-notif-dot {
           width: 7px; height: 7px; border-radius: 50%;
           background: #ef4444;
@@ -380,7 +378,7 @@ export default function Navbar() {
           50% { opacity: 0.6; transform: scale(0.8); }
         }
 
-        /* Hamburger */
+       
         .mh-hamburger {
           display: flex; flex-direction: column; justify-content: center;
           gap: 5px; width: 36px; height: 36px; padding: 6px;
@@ -400,7 +398,7 @@ export default function Navbar() {
         .mh-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
         .mh-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-        /* Mobile menu */
+       
         .mh-mobile-menu {
           position: fixed;
           top: 0; left: 0; right: 0; bottom: 0;
@@ -440,7 +438,7 @@ export default function Navbar() {
           flex-shrink: 0;
         }
 
-        /* Animate nav items on load */
+     
         @keyframes slideDown {
           from { opacity: 0; transform: translateY(-10px); }
           to { opacity: 1; transform: translateY(0); }
@@ -454,7 +452,7 @@ export default function Navbar() {
         .mh-nav-item:nth-child(4) { animation-delay: 0.2s; }
         .mh-nav-item:nth-child(5) { animation-delay: 0.25s; }
 
-        /* Search pill */
+        
         .mh-search {
           display: flex; align-items: center; gap: 8px;
           background: rgba(255,255,255,0.07);
@@ -486,7 +484,7 @@ export default function Navbar() {
             gap: 16,
           }}
         >
-          {/* Logo */}
+        
           <Link
             href="/"
             className="mh-logo mh-nav-item"
@@ -504,7 +502,7 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Nav */}
+        
           <div
             className="hidden md:flex items-center gap-1"
             style={{flex: 1, justifyContent: "center"}}
@@ -573,9 +571,9 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Right side */}
+         
           <div className="hidden md:flex items-center gap-3 mh-nav-item">
-            {/* Search pill */}
+     
             <button className="mh-search">
               <svg
                 style={{width: 14, height: 14}}
@@ -654,13 +652,12 @@ export default function Navbar() {
 
       <div className={`mh-mobile-menu ${mobileOpen ? "open" : ""}`}>
         {/* Mobile logo */}
-        {/* <div style={{ marginBottom: 32 }}>
+        <div style={{ marginBottom: 32 }}>
           <div className="mh-logo-full">
             <Image src="/logo.png" alt="Mishti Houses Logo" width={60} height={48} style={{ objectFit: "contain", width: "auto", height: "144px" }} priority />
           </div>
-        </div> */}
+        </div>
 
-        {/* Mobile search */}
         <div
           style={{
             display: "flex",
