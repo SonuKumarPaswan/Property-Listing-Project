@@ -89,7 +89,7 @@ const handleLogin = async (e: React.FormEvent) => {
   } catch (error: any) {
     console.error("Login error:", error);
 
-    // 🔥 backend error show
+    // backend error show
     const errorMessage =
       error?.response?.data?.message ||
       error?.response?.data?.error ||

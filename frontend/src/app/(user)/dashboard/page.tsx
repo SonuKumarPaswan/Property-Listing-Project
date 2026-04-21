@@ -99,30 +99,26 @@ export default function DashboardPage() {
   });
 
   return (
-    <div className="flex min-h-screen bg-[#0b0d12] text-zinc-200 font-sans">
+    <div className="flex min-h-screen  text-zinc-200 font-sans">
 
-      {/* Mobile overlay */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black/60 z-20 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
-
-      {/* ── SIDEBAR ── */}
       <aside className={`
         fixed lg:sticky top-0 left-0 z-30 h-screen w-60
         flex flex-col bg-[#0f1117] border-r border-white/[0.06]
         px-3 py-7 transition-transform duration-300
         ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
       `}>
-        {/* Logo */}
+       
         <div className="flex items-center gap-2 px-3 mb-9">
           <span className="text-amber-500 text-xl">⬡</span>
           <span className="text-lg font-semibold tracking-wide text-zinc-100 font-serif">NestIQ</span>
         </div>
 
-        {/* Nav links */}
         <nav className="flex flex-col gap-0.5 flex-1">
           {navItems.map((item) => (
             <button
@@ -151,7 +147,6 @@ export default function DashboardPage() {
           ))}
         </nav>
 
-        {/* User card */}
         <div className="flex items-center gap-2.5 bg-white/[0.04] rounded-xl px-3 py-3 mt-4">
           <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-amber-400 to-amber-700 flex items-center justify-center text-[#0b0d12] font-bold text-sm flex-shrink-0">
             {user?.username?.[0]?.toUpperCase() ?? "U"}
@@ -170,10 +165,8 @@ export default function DashboardPage() {
         </div>
       </aside>
 
-      {/* ── MAIN CONTENT ── */}
       <main className="flex-1 min-w-0 px-5 py-7 lg:px-10 overflow-y-auto">
 
-        {/* Topbar */}
         <header className="flex items-start justify-between mb-8 gap-4 flex-wrap">
           <div className="flex items-start gap-3">
             <button
@@ -192,7 +185,7 @@ export default function DashboardPage() {
           </button>
         </header>
 
-        {/* Stats */}
+       
         <section className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-9">
           {stats.map((s) => (
             <div
@@ -209,7 +202,7 @@ export default function DashboardPage() {
           ))}
         </section>
 
-        {/* Filter row */}
+      
         <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
           <h2 className="text-lg font-semibold text-zinc-100 font-serif">Your Properties</h2>
           <div className="flex gap-2 flex-wrap">
@@ -229,14 +222,14 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Listings */}
+    
         <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
           {mockListings.map((l) => (
             <div
               key={l.id}
               className="bg-[#0f1117] border border-white/[0.06] rounded-2xl overflow-hidden group hover:border-amber-500/25 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/50 transition-all duration-200"
             >
-              {/* Image */}
+             
               <div className="relative h-44 overflow-hidden">
                 <img
                   src={l.img}
@@ -259,7 +252,7 @@ export default function DashboardPage() {
                 </button>
               </div>
 
-              {/* Card body */}
+            
               <div className="p-4">
                 <p className="text-[10px] font-bold uppercase tracking-widest text-amber-500 mb-1">{l.type}</p>
                 <h3 className="text-sm font-semibold text-zinc-100 mb-1 leading-snug">{l.title}</h3>
@@ -288,7 +281,6 @@ export default function DashboardPage() {
             </div>
           ))}
 
-          {/* Add card */}
           <div className="bg-[#0f1117] border border-dashed border-white/10 rounded-2xl min-h-72 flex items-center justify-center cursor-pointer group hover:border-amber-500/40 hover:bg-white/[0.02] hover:-translate-y-1 transition-all duration-200">
             <div className="flex flex-col items-center gap-2 text-zinc-600 group-hover:text-amber-500 transition-colors duration-150">
               <span className="text-4xl leading-none">+</span>
