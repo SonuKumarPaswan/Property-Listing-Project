@@ -42,7 +42,7 @@ const getPropertyById = async (req, res) => {
 //   try {
 
 //     console.log("Received property data:", req.body);
-//         console.log("📁 Files:", req.files); 
+//         console.log("Files:", req.files); 
 //     // Auto-generate slug
 //     req.body.slug = slugify(req.body.title, { lower: true, strict: true });
 
@@ -60,6 +60,7 @@ const getPropertyById = async (req, res) => {
 //     res.status(500).json({ success: false, message: err.message });
 //   }
 // };
+
 const createProperty = async (req, res) => {
   try {
     console.log("📦 Body:", req.body);

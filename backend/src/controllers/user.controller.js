@@ -2,7 +2,7 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// 🔑 Generate Token
+//  Generate Token
 const generateToken = (user) => {
   return jwt.sign(
     {
@@ -14,7 +14,7 @@ const generateToken = (user) => {
   );
 };
 
-// ✅ GET ALL USERS
+//  GET ALL USERS
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.find().select("-password");

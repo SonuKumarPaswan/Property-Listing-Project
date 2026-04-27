@@ -1,20 +1,19 @@
 import Navbar from "@/components/layout/Navbar";
 import PropertyCard from "@/components/property/PropertyCard";
+import { useState } from "react";
 export default function Home() {
+  // const[searchLocation, setSearchLocation] = useState("");
+
   return (
     <div>
       <Navbar />
       <section className="relative py-20  h-screen flex items-center justify-center text-center text-white">
-        {/* Background Image */}
         <div className=" h-full  absolute inset-0 bg-[url('https://kmhengineering.com/images/projects/spiranova/3.jpg')] bg-cover bg-center"></div>
-
-        {/* Overlay */}
         <div className="absolute inset-0 bg-black/50"></div>
 
-        {/* Content */}
         <div className="relative max-w-7xl mx-auto px-6 text-center text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Find Your Dream Home
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 ">
+            <span className="text-blue-500 hover:text-red-500">Find Your</span> Dream Home
           </h1>
           <p className="mb-6 text-lg">
             Buy, Sell or Rent properties easily with Mishti Houses
