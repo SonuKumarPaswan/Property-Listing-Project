@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import PropertyCard from "@/components/property/PropertyCard";
 import { useState } from "react";
 export default function Home() {
+
   // const[searchLocation, setSearchLocation] = useState("");
 
   return (

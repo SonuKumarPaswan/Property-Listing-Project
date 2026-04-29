@@ -3,9 +3,9 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db"); 
 dotenv.config();
 
+
 const PORT = process.env.PORT || 8085;
 console.log(`PORT: ${PORT}`);
-
 
 
 connectDB().then(() => {

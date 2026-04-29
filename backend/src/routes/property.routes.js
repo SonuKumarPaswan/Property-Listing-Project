@@ -14,11 +14,14 @@ const {
   propertyValidationSchema,
 } = require("../schemaValidation/property.validation");
 
+
+
+
 router.get("/search", searchProperties);
 router.get("/", getAllProperties);
 router.get("/:id", getPropertyById);
 
-router.post("/",  createProperty);
+router.post("/", upload.array("images", 10),  createProperty);
 
 router.put("/:id", upload.array("images", 10), updateProperty);
 router.delete("/:id", deleteProperty);

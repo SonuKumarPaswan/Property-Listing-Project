@@ -17,7 +17,6 @@ const getAllProperties = async (req, res) => {
 };
 
 
-
 // GET /api/properties/:id
 const getPropertyById = async (req, res) => {
   try {
@@ -38,15 +37,51 @@ const getPropertyById = async (req, res) => {
 
 // POST /api/properties  (with image upload)
 
+const createProperty = async (req, res) => {
+  try {
+    
+    console.log("Received property data:", req.body);
+    console.log("Files:", req.files); 
+    
+
+    // req.body.slug = slugify(req.body.title, { lower: true, strict: true });
+    // if (req.files && req.files.length > 0) {
+    //   req.body.images = req.files.map((file) => ({
+    //     url:       file.path,
+    //     public_id: file.filename,
+    //   }));
+    // }
+    // const property = await Property.create(req.body);
+    // res.status(201).json({ success: true, data: property });
+
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+
+
+
 // const createProperty = async (req, res) => {
 //   try {
+//     console.log("📦 Body:", req.body);
+//     console.log("📁 Files:", req.files);
 
-//     console.log("Received property data:", req.body);
-//         console.log("Files:", req.files); 
-//     // Auto-generate slug
+//     // ✅ multipart/form-data mein JSON strings parse karne padte hain
+//     if (typeof req.body.location === "string") {
+//       req.body.location = JSON.parse(req.body.location);
+//     }
+//     if (typeof req.body.details === "string") {
+//       req.body.details = JSON.parse(req.body.details);
+//     }
+//     if (typeof req.body.amenities === "string") {
+//       req.body.amenities = JSON.parse(req.body.amenities);
+//     }
+
+//     // ✅ slug generate
 //     req.body.slug = slugify(req.body.title, { lower: true, strict: true });
 
-//     // Attach uploaded images from Cloudinary
+//     // ✅ images attach
 //     if (req.files && req.files.length > 0) {
 //       req.body.images = req.files.map((file) => ({
 //         url:       file.path,
@@ -56,50 +91,16 @@ const getPropertyById = async (req, res) => {
 
 //     const property = await Property.create(req.body);
 //     res.status(201).json({ success: true, data: property });
+
 //   } catch (err) {
-//     res.status(500).json({ success: false, message: err.message });
+//     console.error("❌ Full Error:", err.message); // ✅ terminal mein dikhega
+//     res.status(500).json({
+//       success: false,
+//       message: err.message,
+//       details: err.errors  // ✅ validation error details
+//     });
 //   }
 // };
-
-const createProperty = async (req, res) => {
-  try {
-    console.log("📦 Body:", req.body);
-    console.log("📁 Files:", req.files);
-
-    // ✅ multipart/form-data mein JSON strings parse karne padte hain
-    if (typeof req.body.location === "string") {
-      req.body.location = JSON.parse(req.body.location);
-    }
-    if (typeof req.body.details === "string") {
-      req.body.details = JSON.parse(req.body.details);
-    }
-    if (typeof req.body.amenities === "string") {
-      req.body.amenities = JSON.parse(req.body.amenities);
-    }
-
-    // ✅ slug generate
-    req.body.slug = slugify(req.body.title, { lower: true, strict: true });
-
-    // ✅ images attach
-    if (req.files && req.files.length > 0) {
-      req.body.images = req.files.map((file) => ({
-        url:       file.path,
-        public_id: file.filename,
-      }));
-    }
-
-    const property = await Property.create(req.body);
-    res.status(201).json({ success: true, data: property });
-
-  } catch (err) {
-    console.error("❌ Full Error:", err.message); // ✅ terminal mein dikhega
-    res.status(500).json({
-      success: false,
-      message: err.message,
-      details: err.errors  // ✅ validation error details
-    });
-  }
-};
 
 
 
