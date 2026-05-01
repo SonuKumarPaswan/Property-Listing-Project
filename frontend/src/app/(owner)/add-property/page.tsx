@@ -78,7 +78,6 @@ const inputCls =
 const PropertyListing = () => {
   const [step, setStep] = useState(1);
   const [propertyData, setPropertyData] = useState(initialForm);
-  const [uploading, setUploading] = useState(false);
 
   const nextStep = () => setStep((p) => Math.min(p + 1, STEPS.length));
   const prevStep = () => setStep((p) => Math.max(p - 1, 1));
@@ -118,6 +117,7 @@ const PropertyListing = () => {
   };
 
   // handleImageUpload hatao, yeh simple handler lagao
+
   const handleFileSelect = (files: FileList | null) => {
     if (!files) return;
     const newFiles = [...files].filter((f) => f.type.startsWith("image/"));
@@ -154,6 +154,7 @@ const PropertyListing = () => {
     fd.append("lng", propertyData.lng);
 
     // Nested objects — JSON string ke roop mein
+
     fd.append("details", JSON.stringify(propertyData.details));
     fd.append("amenities", JSON.stringify(propertyData.amenities));
 
@@ -162,14 +163,21 @@ const PropertyListing = () => {
       fd.append("images", file);
     });
     console.log("Submitting form with data:", propertyData);
-    
     const res = await api.post("/properties", fd, {
       headers: {"Content-Type": "multipart/form-data"},
     });
+    if (res.status === 201) {
+      alert("Property listing created successfully!");
+      setPropertyData(initialForm);
+      setStep(1);
+    } else {
+      alert("Failed to create property listing. Please try again.");
+    }
     console.log("Created:", res.data);
-  };
+  }; 
 
   // ─── Step counter for bedrooms/bathrooms/balconies ────────────────────────
+
   const Counter = ({
     name,
     label,
@@ -302,13 +310,13 @@ const PropertyListing = () => {
                     placeholder="e.g. 4500000"
                     value={propertyData.price}
                     onChange={handleChange}
-                    className={`${inputCls} flex-1`}
+                    className={`${inputCls}  appearance-none`}
                   />
                   <select
                     name="priceUnit"
                     value={propertyData.priceUnit}
                     onChange={handleChange}
-                    className={`${inputCls} w-36 appearance-none`}
+                    className={`${inputCls}  appearance-none`}
                   >
                     <option value="">Unit</option>
                     <option value="total">Total</option>
@@ -446,7 +454,7 @@ const PropertyListing = () => {
                     min={0}
                     value={propertyData.details.area}
                     onChange={handleChange}
-                    className={`${inputCls} flex-1`}
+                    className={`${inputCls} appearance-none`}
                   />
                   <select
                     name="areaUnit"
@@ -543,7 +551,7 @@ const PropertyListing = () => {
                         details: {...p.details, parking: !p.details.parking},
                       }))
                     }
-                    className={`relative w-10 h-[22px] rounded-full transition-colors ${propertyData.details.parking ? "bg-gray-900" : "bg-gray-300"}`}
+                    className={`relative w-10 h-[22px] pr-9 rounded-full transition-colors ${propertyData.details.parking ? "bg-gray-900" : "bg-gray-300"}`}
                   >
                     <span
                       className={`absolute top-[3px] w-4 h-4 bg-white rounded-full shadow transition-transform
@@ -569,7 +577,7 @@ const PropertyListing = () => {
           </>
         )}
 
-        {/* ── Step 4: Amenities ─────────────────────────────────────────── */}
+        {/*  Step 4: Amenities  */}
         {step === 4 && (
           <>
             <h2 className="text-xl font-medium text-gray-900 mb-1">
@@ -815,3 +823,76 @@ const PropertyListing = () => {
 };
 
 export default PropertyListing;
+
+
+
+
+
+
+
+
+// "use client";
+
+// import React, { useState } from "react";
+// import api from "@/lib/api"; 
+
+// const Page = () => {
+//   const [images, setImages] = useState<File[]>([]);
+
+//   // 📸 select images
+//   const handleChange = (e: React.ChangeEvent<HTMLInputElement> ) => {
+//     setImages(Array.from(e.target.files || []));
+//   };
+
+//   // 🚀 submit
+//   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
+
+//     if (images.length === 0) {
+//       alert("Please select images");
+//       return;
+//     }
+
+//     const fd = new FormData();
+
+//     images.forEach((file) => {
+//       fd.append("images", file); // backend same hona chahiye
+//     });
+
+//     try {
+//       console.log("Submitting form with images:", images);
+//       const res = await api.post("/properties", fd);
+//       console.log(res.data);
+//       alert("Uploaded successfully");
+//     } catch (err) {
+//       console.error(err);
+//       alert("Upload failed");
+//     }
+//   };
+
+//   return (
+//     <div className="p-6">
+//       <h2 className="text-lg font-bold mb-4">Upload Images</h2>
+
+//       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+//         {/* file input */}
+//         <input
+//           type="file"
+//           multiple
+//           onChange={handleChange}
+//           className="mb-4"
+//         />
+
+//         {/* button */}
+//         <button
+//           type="submit"
+//           className="bg-blue-500 text-white px-4 py-2 rounded"
+//         >
+//           Upload
+//         </button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default Page;

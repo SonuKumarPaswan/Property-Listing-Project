@@ -6,11 +6,8 @@ const { Property } = require("../models/Property");
 // GET /api/properties
 const getAllProperties = async (req, res) => {
   try {
-    const properties = await Property.find({ status: "available" })
-      .populate("owner", "name email")
-      .sort({ createdAt: -1 });
-
-    res.status(200).json({ success: true, count: properties.length, data: properties });
+    const properties = await Property.find({});
+    res.status(200).json({ success: true, data: properties });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
@@ -39,25 +36,88 @@ const getPropertyById = async (req, res) => {
 
 const createProperty = async (req, res) => {
   try {
-    
     console.log("Received property data:", req.body);
-    console.log("Files:", req.files); 
-    
+    console.log("Files:", req.files);
 
-    // req.body.slug = slugify(req.body.title, { lower: true, strict: true });
-    // if (req.files && req.files.length > 0) {
-    //   req.body.images = req.files.map((file) => ({
-    //     url:       file.path,
-    //     public_id: file.filename,
-    //   }));
-    // }
-    // const property = await Property.create(req.body);
-    // res.status(201).json({ success: true, data: property });
+    // ✅ 1. Parse JSON fields
+    const details = req.body.details ? JSON.parse(req.body.details) : {};
+    const amenities = req.body.amenities ? JSON.parse(req.body.amenities) : [];
+
+    // ✅ 2. Generate slug
+    const slug = slugify(req.body.title, { lower: true, strict: true });
+
+    // ✅ 3. Images map
+    const images = req.files?.map((file) => ({
+      url: file.path,
+      public_id: file.filename,
+    })) || [];
+
+    // ✅ 4. Final structured payload (VERY IMPORTANT)
+    const propertyData = {
+      title: req.body.title,
+      slug,
+      description: req.body.description,
+
+      type: req.body.type,
+      listingType: req.body.listingType,
+      price: Number(req.body.price),
+      priceUnit: req.body.priceUnit,
+
+      status: req.body.status || "available",
+
+      // 📍 Location (nested)
+      location: {
+        address: req.body.address,
+        city: req.body.city,
+        state: req.body.state,
+        zipCode: req.body.zipCode,
+        country: req.body.country,
+        coordinates: {
+          type: "Point",
+          coordinates: [
+            Number(req.body.lng), // longitude
+            Number(req.body.lat), // latitude
+          ],
+        },
+      },
+
+      // 🏠 Details (parsed)
+      details: {
+        ...details,
+        bedrooms: Number(details.bedrooms),
+        bathrooms: Number(details.bathrooms),
+        balconies: Number(details.balconies),
+        area: Number(details.area),
+        floor: Number(details.floor),
+        totalFloors: Number(details.totalFloors),
+        ageOfProperty: Number(details.ageOfProperty),
+      },
+
+      // 🏢 Amenities
+      amenities,
+
+      // 🖼 Images
+      images,
+    };
+
+    // ✅ 5. Save in DB
+    const property = await Property.create(propertyData);
+
+    res.status(201).json({
+      success: true,
+      message: "Property created successfully",
+      data: property,
+    });
 
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    console.error("Create Property Error:", err);
+    res.status(500).json({
+      success: false,
+      message: err.message,
+    });
   }
 };
+
 
 
 
